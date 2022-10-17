@@ -1,7 +1,8 @@
 i = 0
 with open('DZFORM1.txt', 'a+') as form1:
     while i == 0:
-        print(*form1)
+        for line in form1:
+            print(line.rstrip('\n'))
         answ = input('\nДобавить новые данные? y/n: ')
         if answ == 'y':
             word = 4
