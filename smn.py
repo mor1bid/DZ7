@@ -85,10 +85,14 @@ while prog == 0:
                 elif choi == '2':
                     cont = input('Введите фамилию желаемого контакта: \n')
                     with open(path, 'r') as delread:
+                        text = delread.readlines()
                         with open(path, 'w') as delex:
-                            for line in delread:
-                                if line != cont:
+                            delex.seek(0)
+                            for line in text:
+                                if cont not in line:
                                     delex.write(line)
+                                elif line != '':
+                                    delex.write(' ')
                             i += 1
                             print('\nГотово!')
                 else:
