@@ -8,7 +8,7 @@ print('f Удаление данных. \n')
 print('g Завершение работы. \n')
 prog = 0
 ram = 0
-enu = 0
+# enu = 0
 while prog == 0:
     work = input('Введите символ желаемого пункта меню: ')
     if work == 'a':
@@ -19,17 +19,25 @@ while prog == 0:
                 print(line.rstrip('\n'))
     elif work == 'b':
         with open('DZFORM1.txt', 'a+') as form1:
-            enu += 1
+            # enu += 1
             word = 4
             print('Введите фамилию, имя, телефон и описание (отдельно):')
-            form1.writelines(str(enu))
-            form1.writelines('. ')
-            form1.writelines('\n')
+            # form1.writelines(str(enu))
+            # form1.writelines('. ')
+            # form1.writelines('\n')
             while word > 0:
                 text = input()
                 form1.writelines(text)
                 form1.writelines('\n')
                 word -= 1
+    elif work == 'c':
+        path = input('Введите адрес желаемого файла и/или его название: \n')
+        with open(path, 'r') as impex:
+            text = impex.readlines()
+            with open('DZFORM1.txt', 'a+') as form1:
+                form1.writelines(text)
+                form1.writelines('\n')
+
     elif work == 'g':
         prog += 1
     else:
