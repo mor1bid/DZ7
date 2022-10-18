@@ -21,7 +21,7 @@ while prog == 0:
         with open('DZFORM1.txt', 'a+') as form1:
             if form == '1':
                 print('Введите фамилию, имя, телефон и описание:')
-                form1.writelines('\n')
+                form1.writelines(' \n')
                 text = input().split(' ')
                 for i in text:
                     if i.isdigit() == False:
@@ -51,7 +51,7 @@ while prog == 0:
                         if i.isdigit() == False:
                             form1.writelines('\n')
                         form1.writelines(i)
-                    form1.writelines('\n')
+                    form1.writelines(' \n')
                     print('\nГотово!')
                 elif choi == '2':
                     for line in impex:
@@ -66,13 +66,13 @@ while prog == 0:
                             elif len(i) <= 3:
                                 form1.writelines('\n')
                             form1.writelines(i)
-                    form1.writelines('\n')
+                    form1.writelines(' \n')
                     print('\nГотово!')
                 elif choi == 'n':
                     form1.writelines(' \n')
                     text = impex.readlines()
                     form1.writelines(text)
-                    form1.writelines('\n')
+                    form1.writelines(' \n')
                     print('\nГотово!')
     elif work == 'd':
         i = 0
@@ -81,7 +81,7 @@ while prog == 0:
             with open(path, 'a') as expex:
                 text = form1.readlines()
                 expex.writelines(text)
-                expex.writelines('\n')
+                expex.writelines(' \n')
                 print('\nГотово!')
                 while i == 0 :
                     answ = input('Вывести данные заданного файла? y/n: ')
@@ -126,7 +126,7 @@ while prog == 0:
                         i += 1
                         print('\nГотово!')
                 elif choi == '2':
-                    cont = input('Введите данные желаемого контакта: \n')
+                    cont = input('Введите фамилию и имя желаемого контакта: \n')
                     with open(path, 'r') as delread:
                         text = delread.readlines()
                         with open(path, 'w') as delex:
