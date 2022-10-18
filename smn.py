@@ -37,13 +37,43 @@ while prog == 0:
                         form1.writelines(',')
     elif work == 'c':
         path = input('Введите адрес желаемого файла и/или его название: \n')
+        choi = input('Хотите перевести содержимое файла в формат списка/строки/ или оставить всё как есть? 1/2/n: ')
         with open('DZFORM1.txt', 'a+') as form1:
             with open(path, 'r') as impex:
-                form1.writelines('\n')
-                text = impex.readlines()
-                form1.writelines(text)
-                form1.writelines('\n')
-                print('\nГотово!')
+                if choi == '1':
+                    form1.writelines(' \n')
+                    text = impex.readlines()
+                    text = str(text).split(',')
+                        # if line == ',':
+                        #     line = '\n'
+                        #     form1.writelines(line)
+                    for i in text:
+                        if i.isdigit() == False:
+                            form1.writelines('\n')
+                        form1.writelines(i)
+                    form1.writelines('\n')
+                    print('\nГотово!')
+                elif choi == '2':
+                    for line in impex:
+                        form1.writelines(' \n')
+                        text = impex.readlines()
+                        text = str(text).split('\n')
+                        # if line == '\n':
+                        #     line = ','
+                        for i in text:
+                            if i.isdigit() == False and len(i) > 3:
+                                form1.writelines(',')
+                            elif len(i) <= 3:
+                                form1.writelines('\n')
+                            form1.writelines(i)
+                    form1.writelines('\n')
+                    print('\nГотово!')
+                elif choi == 'n':
+                    form1.writelines(' \n')
+                    text = impex.readlines()
+                    form1.writelines(text)
+                    form1.writelines('\n')
+                    print('\nГотово!')
     elif work == 'd':
         i = 0
         path = input('Введите адрес желаемого файла и/или его название: \n')

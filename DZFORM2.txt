@@ -1,4 +1,3 @@
- 
 Ivanov
 Peter
 +79784203121
@@ -10,9 +9,3 @@ Ivan
 architector
  
 Agent,Dennis,+8,800,555,35,35,moneyman,
-
- 
-Gent
-Dennis
-+8 800 555 35 35
-iamthealphaandtheomega
