@@ -1,14 +1,13 @@
 print('Здравствуйте! \n')
-print('a Просмотреть справочник. \n')
-print('b Добавить данные. \n')
-print('c Импортировать данные. \n')
-print('d Экспортировать данные. \n')
-print('e Поиск данных. \n')
-print('f Удаление данных. \n')
-print('g Завершение работы.')
+print('(a) Просмотреть справочник. \n')
+print('(b) Добавить данные. \n')
+print('(c) Импортировать данные. \n')
+print('(d) Экспортировать данные. \n')
+print('(e) Поиск данных. \n')
+print('(f) Удаление данных. \n')
+print('(g) Завершение работы.')
 prog = 0
 ram = 0
-# enu = 0
 while prog == 0:
     work = input('\nВведите символ желаемого пункта меню: ')
     if work == 'a':
@@ -21,23 +20,20 @@ while prog == 0:
         form = input('Выберите желаемый формат (список/строка) 1/2: ')
         with open('DZFORM1.txt', 'a+') as form1:
             if form == '1':
-                # enu += 1
-                word = 4
                 print('Введите фамилию, имя, телефон и описание:')
-                # form1.writelines(str(enu))
-                # form1.writelines('. ')
                 form1.writelines('\n')
                 text = input().split(' ')
                 for i in text:
-                    form1.writelines(i)
                     if i.isdigit() == False:
                         form1.writelines('\n')
+                    form1.writelines(i)
             elif form == '2':
                 print('Введите фамилию, имя, телефон и описание:')
+                form1.writelines(' \n')
                 text = input().split(' ')
                 for i in text:
                     form1.writelines(i)
-                    if i.isdigit() == False or i != len(text):
+                    if i.isdigit() == False or i != len(text) - 1:
                         form1.writelines(',')
     elif work == 'c':
         path = input('Введите адрес желаемого файла и/или его название: \n')
@@ -68,7 +64,23 @@ while prog == 0:
                         i += 1
                     else:
                         print('Ошибка!')
-
+    elif work == 'e':
+        path = input('\nВведите адрес желаемого файла и/или его название: \n')
+        cont = input('Введите фамилию желаемого контакта: \n')
+        with open(path, 'r') as lookex:
+            text = lookex.readlines()
+            call = 0
+            lookex.seek(0)
+            for line in text:
+                if cont in line and call == 0:
+                    print(line)
+                else:
+                    call = 1
+                if line != '\n' and call == 1:
+                    print(line)
+                else:
+                    call = 0
+                    print('\nГотово!')
     elif work == 'f':
         i = 0
         while i == 0:
@@ -87,12 +99,17 @@ while prog == 0:
                     with open(path, 'r') as delread:
                         text = delread.readlines()
                         with open(path, 'w') as delex:
+                            call = 0
                             delex.seek(0)
                             for line in text:
-                                if cont not in line:
+                                if cont not in line and call == 0:
                                     delex.write(line)
-                                elif line != '':
-                                    delex.write(' ')
+                                else:
+                                    call = 1
+                                if line != '\n' and call == 1:
+                                    delex.write('')
+                                else:
+                                    call = 0
                             i += 1
                             print('\nГотово!')
                 else:
