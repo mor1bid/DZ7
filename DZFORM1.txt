@@ -1,4 +1,3 @@
- 
 Ivanov
 Peter
 +79784203121
@@ -11,7 +10,6 @@ architector
  
 Agent,Dennis,+8,800,555,35,35,moneyman,
 
- 
 Gent
 Dennis
 +8 800 555 35 35

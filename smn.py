@@ -37,7 +37,7 @@ while prog == 0:
                         form1.writelines(',')
     elif work == 'c':
         path = input('Введите адрес желаемого файла и/или его название: \n')
-        choi = input('Хотите перевести содержимое файла в формат списка/строки/ или оставить всё как есть? 1/2/n: ')
+        choi = input('Хотите перевести содержимое файла в формат списка/строки/ или нет? 1/2/n: ')
         with open('DZFORM1.txt', 'a+') as form1:
             with open(path, 'r') as impex:
                 if choi == '1':
@@ -102,15 +102,16 @@ while prog == 0:
             call = 0
             lookex.seek(0)
             for line in text:
-                if cont in line and call == 0:
-                    print(line)
+                if cont not in line and call == 0:
+                    call == 0
                 else:
+                    print('\n')
                     call = 1
-                if line != '\n' and call == 1:
+                if line != ' \n' and call == 1:
                     print(line)
                 else:
                     call = 0
-                    print('\nГотово!')
+            print('\nГотово!')
     elif work == 'f':
         i = 0
         while i == 0:
@@ -125,7 +126,7 @@ while prog == 0:
                         i += 1
                         print('\nГотово!')
                 elif choi == '2':
-                    cont = input('Введите фамилию желаемого контакта: \n')
+                    cont = input('Введите данные желаемого контакта: \n')
                     with open(path, 'r') as delread:
                         text = delread.readlines()
                         with open(path, 'w') as delex:
@@ -136,7 +137,7 @@ while prog == 0:
                                     delex.write(line)
                                 else:
                                     call = 1
-                                if line != '\n' and call == 1:
+                                if line != ' \n' and call == 1:
                                     delex.write('')
                                 else:
                                     call = 0
