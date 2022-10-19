@@ -29,7 +29,6 @@ while prog == 0:
                 print('\nГотово!')
             elif form == '2':
                 print('Введите фамилию, имя, телефон и описание:')
-                # form1.writelines('\n')
                 form1.writelines(' \n')
                 text = input().split(' ')
                 for i in text:
@@ -99,7 +98,7 @@ while prog == 0:
                         i += 1
                         print('\nГотово!')
                 elif choi == '2':
-                    cont = input('Введите фамилию и имя желаемого контакта: \n')
+                    cont = input('Введите фамилию желаемого контакта: \n')
                     with open(path, 'r') as delread:
                         text = delread.readlines()
                         with open(path, 'w') as delex:
