@@ -13,7 +13,7 @@ while prog == 0:
     if work == 'a':
         with open('DZFORM1.txt', 'r+') as form1:
             ram = 0
-            print('Ваш справочник: \n')
+            print('\nВаш справочник:')
             for line in form1:
                 print(line.rstrip('\n'))
     elif work == 'b':
@@ -21,59 +21,32 @@ while prog == 0:
         with open('DZFORM1.txt', 'a+') as form1:
             if form == '1':
                 print('Введите фамилию, имя, телефон и описание:')
-                form1.writelines(' \n')
                 text = input().split(' ')
                 for i in text:
                     if i.isdigit() == False:
-                        form1.writelines('\n')
+                        form1.writelines(' \n')
                     form1.writelines(i)
+                print('\nГотово!')
             elif form == '2':
                 print('Введите фамилию, имя, телефон и описание:')
+                # form1.writelines('\n')
                 form1.writelines(' \n')
                 text = input().split(' ')
                 for i in text:
                     form1.writelines(i)
-                    if i.isdigit() == False or i != len(text) - 1:
+                    if i.isdigit() == False and '+' not in i and '(' not in i and ')' not in i:
                         form1.writelines(',')
+                form1.writelines(' \n')
+                print('\nГотово!')
     elif work == 'c':
         path = input('Введите адрес желаемого файла и/или его название: \n')
-        choi = input('Хотите перевести содержимое файла в формат списка/строки/ или нет? 1/2/n: ')
         with open('DZFORM1.txt', 'a+') as form1:
             with open(path, 'r') as impex:
-                if choi == '1':
-                    form1.writelines(' \n')
-                    text = impex.readlines()
-                    text = str(text).split(',')
-                        # if line == ',':
-                        #     line = '\n'
-                        #     form1.writelines(line)
-                    for i in text:
-                        if i.isdigit() == False:
-                            form1.writelines('\n')
-                        form1.writelines(i)
-                    form1.writelines(' \n')
-                    print('\nГотово!')
-                elif choi == '2':
-                    for line in impex:
-                        form1.writelines(' \n')
-                        text = impex.readlines()
-                        text = str(text).split('\n')
-                        # if line == '\n':
-                        #     line = ','
-                        for i in text:
-                            if i.isdigit() == False and len(i) > 3:
-                                form1.writelines(',')
-                            elif len(i) <= 3:
-                                form1.writelines('\n')
-                            form1.writelines(i)
-                    form1.writelines(' \n')
-                    print('\nГотово!')
-                elif choi == 'n':
-                    form1.writelines(' \n')
-                    text = impex.readlines()
-                    form1.writelines(text)
-                    form1.writelines(' \n')
-                    print('\nГотово!')
+                form1.writelines(' \n')
+                text = impex.readlines()
+                form1.writelines(text)
+                form1.writelines(' \n')
+                print('\nГотово!')
     elif work == 'd':
         i = 0
         path = input('Введите адрес желаемого файла и/или его название: \n')
@@ -101,11 +74,11 @@ while prog == 0:
             text = lookex.readlines()
             call = 0
             lookex.seek(0)
+            print('\n')
             for line in text:
                 if cont not in line and call == 0:
                     call == 0
                 else:
-                    print('\n')
                     call = 1
                 if line != ' \n' and call == 1:
                     print(line)
